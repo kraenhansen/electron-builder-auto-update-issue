@@ -1,0 +1,37 @@
+{
+  "name": "electron-builder-auto-updating-issue",
+  "productName": "Electron Builder Auto Updating Issue",
+  "version": "0.1.0",
+  "description": "Demonstrating an issue in the dist/latest-mac.yml",
+  "main": "index.js",
+  "scripts": {
+    "package": "electron-builder --publish=never"
+  },
+  "repository": "https://github.com/kraenhansen/electron-builder-auto-update-issue",
+  "author": "Kræn Hansen <kraen.hansen@realm.io>",
+  "license": "ISC",
+  "build": {
+    "appId": "io.realm.electron-builder-auto-update-issue",
+    "mac": {
+      "target": [
+        "dmg",
+        "zip"
+      ]
+    },
+    "publish": [
+      {
+        "provider": "s3",
+        "bucket": "static.realm.io",
+        "region": "us-east-1",
+        "path": "downloads/electron-builder-auto-update-issue"
+      }, {
+        "provider": "github",
+        "private": true
+      }
+    ]
+  },
+  "devDependencies": {
+    "electron-builder": "^19.49.0",
+    "electron-publisher-s3": "^19.49.0"
+  }
+}
